@@ -3,10 +3,9 @@ import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lesson_for_fintech/boxes.dart';
 import 'package:lesson_for_fintech/core/cubit/user_cubit.dart';
 import 'package:lesson_for_fintech/widgets/user_card.dart';
-
-import '../boxes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,27 +25,15 @@ class _HomePageState extends State<HomePage> {
           listener: (context, state) {
             // print(" listener $state");
             if (state is UserNotConnection) {
-              CherryToast.info(
-                title: const Text("No InterNet"),
-                action: const Text("Device hasn't connect internet"),
-                animationType: AnimationType.fromTop,
-                toastDuration: const Duration(seconds: 2),
-                enableIconAnimation: true,
-                displayCloseButton: false,
-                toastPosition: Position.top,
-                displayIcon: true,
-              ).show(context);
+              myToast(
+                      text1: "No InterNet",
+                      text2: "Device hasn't connect internet")
+                  .show(context);
             } else if (state is UserInitial) {
-              CherryToast.info(
-                title: const Text("Internet connect"),
-                action: const Text("Device has connect internet"),
-                animationType: AnimationType.fromTop,
-                toastDuration: const Duration(seconds: 2),
-                enableIconAnimation: true,
-                displayCloseButton: false,
-                toastPosition: Position.top,
-                displayIcon: true,
-              ).show(context);
+              myToast(
+                      text1: "Internet connect",
+                      text2: "Device has connect internet")
+                  .show(context);
             }
           },
           builder: (context, state) {
@@ -104,6 +91,19 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       ),
+    );
+  }
+
+  CherryToast myToast({required String text1, required String text2}) {
+    return CherryToast.info(
+      title: Text(text1),
+      action: Text(text2),
+      animationType: AnimationType.fromTop,
+      toastDuration: const Duration(seconds: 2),
+      enableIconAnimation: true,
+      displayCloseButton: false,
+      toastPosition: Position.top,
+      displayIcon: true,
     );
   }
 }

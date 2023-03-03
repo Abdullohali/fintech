@@ -4,7 +4,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:lesson_for_fintech/core/cubit/user_cubit.dart';
 import 'package:lesson_for_fintech/model/hive_user.dart';
 import 'package:lesson_for_fintech/screens/home_page.dart';
-import 'model/all_users.dart';
 
 void main() async {
   await Hive.initFlutter();
