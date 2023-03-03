@@ -36,6 +36,17 @@ class _HomePageState extends State<HomePage> {
                 toastPosition: Position.top,
                 displayIcon: true,
               ).show(context);
+            } else if (state is UserInitial) {
+              CherryToast.info(
+                title: const Text("Internet connect"),
+                action: const Text("Device has connect internet"),
+                animationType: AnimationType.fromTop,
+                toastDuration: const Duration(seconds: 2),
+                enableIconAnimation: true,
+                displayCloseButton: false,
+                toastPosition: Position.top,
+                displayIcon: true,
+              ).show(context);
             }
           },
           builder: (context, state) {
